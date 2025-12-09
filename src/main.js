@@ -56,11 +56,6 @@ colorblindToggle.addEventListener('change', () => {
   game.togglePalette(colorblindToggle.checked);
 });
 
-const audioToggle = document.getElementById('toggle-audio');
-audioToggle.addEventListener('change', () => {
-  ui.setWarning(audioToggle.checked ? '' : 'Sound muted. (No audio yet, placeholder)');
-});
-
 window.addEventListener('resize', () => checkViewport());
 checkViewport();
 
