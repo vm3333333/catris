@@ -24,8 +24,8 @@ export class Renderer {
     const cell = canvas.width / board.width;
     canvas.height = cell * board.height;
     const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    gradient.addColorStop(0, 'rgba(107,255,234,0.08)');
-    gradient.addColorStop(1, 'rgba(255,123,63,0.12)');
+    gradient.addColorStop(0, 'rgba(94,240,255,0.08)');
+    gradient.addColorStop(1, 'rgba(255,200,87,0.12)');
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -33,8 +33,8 @@ export class Renderer {
     const heatGlow = Math.min(0.4, flameLevel * 0.6);
     if (heatGlow > 0) {
       const heat = ctx.createLinearGradient(0, canvas.height * (1 - flameLevel), 0, canvas.height);
-      heat.addColorStop(0, 'rgba(255, 123, 63, 0)');
-      heat.addColorStop(1, `rgba(255, 123, 63, ${0.4 + heatGlow})`);
+      heat.addColorStop(0, 'rgba(255, 93, 115, 0)');
+      heat.addColorStop(1, `rgba(255, 93, 115, ${0.4 + heatGlow})`);
       ctx.fillStyle = heat;
       ctx.fillRect(0, canvas.height * (1 - flameLevel), canvas.width, canvas.height);
     }
