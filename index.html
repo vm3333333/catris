@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catris: Neon Inferno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div class="sidebar">
+      <div class="brand">Catris: <span>Neon Inferno</span></div>
+      <div class="story-panel">
+        <h3>Mission Feed</h3>
+        <div id="story-log"></div>
+      </div>
+      <div class="controls-panel">
+        <h3>Controls</h3>
+        <ul>
+          <li>← / → move</li>
+          <li>↑ rotate</li>
+          <li>↓ soft drop</li>
+          <li>Space hard drop</li>
+          <li>L fire laser</li>
+          <li>Esc pause</li>
+        </ul>
+      </div>
+    </div>
+
+    <main class="game-shell">
+      <div class="canvas-wrap">
+        <canvas id="game-canvas" width="360" height="720"></canvas>
+        <div id="warning" class="warning" aria-live="polite"></div>
+      </div>
+      <div class="hud">
+        <div class="stat">
+          <label>Score</label>
+          <div id="score">0</div>
+        </div>
+        <div class="stat">
+          <label>Level</label>
+          <div id="level">1</div>
+        </div>
+        <div class="stat">
+          <label>Lines</label>
+          <div id="lines">0</div>
+        </div>
+        <div class="meter">
+          <label>Flame</label>
+          <div class="bar"><span id="flame-bar"></span></div>
+        </div>
+        <div class="meter">
+          <label>Laser</label>
+          <div class="bar"><span id="laser-bar"></span></div>
+        </div>
+        <div class="previews">
+          <div class="preview">
+            <label>Next</label>
+            <canvas id="next-canvas" width="96" height="96"></canvas>
+          </div>
+          <div class="preview">
+            <label>Hold</label>
+            <canvas id="hold-canvas" width="96" height="96"></canvas>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="overlay" class="overlay show">
+    <div class="panel">
+      <h1>Catris: Neon Inferno</h1>
+      <p>Nova, the hacker cat, needs you to keep the neon city from plunging into the lava ocean.</p>
+      <div class="menu-buttons">
+        <button data-action="story">Start Story Mode</button>
+        <button data-action="endless">Start Endless</button>
+        <button data-action="tutorial">Tutorial</button>
+      </div>
+      <div class="settings">
+        <label><input type="checkbox" id="toggle-audio" checked> Sound</label>
+        <label><input type="checkbox" id="toggle-colorblind"> Colorblind palette</label>
+      </div>
+    </div>
+  </div>
+
+  <div id="pause" class="overlay">
+    <div class="panel small">
+      <h2>Paused</h2>
+      <div class="menu-buttons">
+        <button data-action="resume">Resume</button>
+        <button data-action="restart">Restart</button>
+        <button data-action="menu">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dialog" class="dialog hidden" aria-live="polite">
+    <div class="bubble">
+      <div id="dialog-text"></div>
+      <button id="dialog-close">Continue</button>
+    </div>
+  </div>
+
+  <div id="tiny-warning" class="tiny-warning hidden">Game works best on larger screens.</div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
