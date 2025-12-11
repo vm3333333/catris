@@ -74,3 +74,4 @@ window.addEventListener('visibilitychange', () => {
 });
 
 ui.logStory('Nova online. Tap a mode to start.');
+window.__catrisBooted = true;

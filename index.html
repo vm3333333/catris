@@ -3,77 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catris: Neon Inferno</title>
+  <title>Catris: Rams Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app">
-    <div class="sidebar">
-      <div class="brand">Catris: <span>Neon Inferno</span></div>
-      <div class="story-panel">
-        <h3>Mission Feed</h3>
-        <div id="story-log"></div>
+  <div class="console">
+    <header class="console__header">
+      <div class="brand">
+        <div class="brand__mark"></div>
+        <div class="brand__text">
+          <div class="brand__title">Catris</div>
+          <span class="brand__subtitle">Model 500</span>
+        </div>
       </div>
-      <div class="controls-panel">
-        <h3>Controls</h3>
-        <ul>
-          <li>← / → move</li>
-          <li>↑ rotate</li>
-          <li>↓ soft drop</li>
-          <li>Space hard drop</li>
-          <li>L fire laser</li>
-          <li>Esc pause</li>
-        </ul>
+      <div class="header__status">
+        <div class="pill">
+          <span class="pill__dot"></span>
+          <span class="pill__text">Active</span>
+        </div>
+        <div class="header__meta">Designed in Germany • Ser. 884-2024</div>
       </div>
+    </header>
+
+    <div class="console__body">
+      <section class="display">
+        <div class="display__frame">
+          <canvas id="game-canvas" width="360" height="720"></canvas>
+          <div class="display__glare"></div>
+          <div id="warning" class="warning" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="module">
+          <div class="module__label">Next Sequence</div>
+          <div class="preview-pair">
+            <div class="preview-card">
+              <div class="preview-card__label">Next</div>
+              <div class="preview-card__screen">
+                <canvas id="next-canvas" width="96" height="96"></canvas>
+              </div>
+            </div>
+            <div class="preview-card">
+              <div class="preview-card__label">Hold</div>
+              <div class="preview-card__screen">
+                <canvas id="hold-canvas" width="96" height="96"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module__label">Telemetry</div>
+          <div class="metrics">
+            <div class="metric metric--primary">
+              <span class="metric__label">Score</span>
+              <div id="score" class="metric__value">0</div>
+            </div>
+            <div class="metric-row">
+              <div class="metric">
+                <span class="metric__label">Level</span>
+                <div id="level" class="metric__value">1</div>
+              </div>
+              <div class="metric">
+                <span class="metric__label">Lines</span>
+                <div id="lines" class="metric__value">0</div>
+              </div>
+            </div>
+            <div class="meter">
+              <div class="meter__label">Flame</div>
+              <div class="meter__track"><span id="flame-bar"></span></div>
+            </div>
+            <div class="meter">
+              <div class="meter__label">Laser</div>
+              <div class="meter__track"><span id="laser-bar"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module__label">Mission Feed</div>
+          <div id="story-log" class="story-log"></div>
+        </div>
+
+        <div class="module module--controls">
+          <div class="module__label">Controls</div>
+          <ul class="controls-list">
+            <li><span>Move</span><span>← / →</span></li>
+            <li><span>Rotate</span><span>↑</span></li>
+            <li><span>Soft Drop</span><span>↓</span></li>
+            <li><span>Hard Drop</span><span>Space</span></li>
+            <li><span>Fire Laser</span><span>L</span></li>
+            <li><span>Pause</span><span>Esc</span></li>
+          </ul>
+        </div>
+      </aside>
     </div>
 
-    <main class="game-shell">
-      <div class="canvas-wrap">
-        <canvas id="game-canvas" width="360" height="720"></canvas>
-        <div id="warning" class="warning" aria-live="polite"></div>
+    <footer class="console__footer">
+      <div class="status-line">
+        <span class="status-line__dot"></span>
+        <span class="status-line__text">System ready</span>
       </div>
-      <div class="hud">
-        <div class="stat">
-          <label>Score</label>
-          <div id="score">0</div>
-        </div>
-        <div class="stat">
-          <label>Level</label>
-          <div id="level">1</div>
-        </div>
-        <div class="stat">
-          <label>Lines</label>
-          <div id="lines">0</div>
-        </div>
-        <div class="meter">
-          <label>Flame</label>
-          <div class="bar"><span id="flame-bar"></span></div>
-        </div>
-        <div class="meter">
-          <label>Laser</label>
-          <div class="bar"><span id="laser-bar"></span></div>
-        </div>
-        <div class="previews">
-          <div class="preview">
-            <label>Next</label>
-            <canvas id="next-canvas" width="96" height="96"></canvas>
-          </div>
-          <div class="preview">
-            <label>Hold</label>
-            <canvas id="hold-canvas" width="96" height="96"></canvas>
-          </div>
-        </div>
-      </div>
-    </main>
+      <div class="status-line__serial">CATRIS • Rams Edition</div>
+    </footer>
   </div>
 
   <div id="overlay" class="overlay show">
     <div class="panel">
-      <h1>Catris: Neon Inferno</h1>
-      <p>Nova, the hacker cat, needs you to keep the neon city from plunging into the lava ocean.</p>
+      <div id="boot-warning" class="serve-warning hidden"></div>
+      <div class="panel__badge">Model 500</div>
+      <h1>Catris: Rams Edition</h1>
+      <p>Precision hardware shell with Nova on comms. Select a mode to deploy.</p>
       <div class="menu-buttons">
         <button data-action="story">Start Story Mode</button>
         <button data-action="endless">Start Endless</button>
@@ -88,6 +132,7 @@
   <div id="pause" class="overlay">
     <div class="panel small">
       <h2>Paused</h2>
+      <p>Take a breath. Your progress is preserved.</p>
       <div class="menu-buttons">
         <button data-action="resume">Resume</button>
         <button data-action="restart">Restart</button>
@@ -105,6 +150,41 @@
 
   <div id="tiny-warning" class="tiny-warning hidden">Game works best on larger screens.</div>
 
-  <script type="module" src="src/main.js"></script>
+  <script>
+    (function () {
+      const overlay = document.getElementById('overlay');
+      const warning = document.getElementById('boot-warning');
+      function showWarning(msg) {
+        if (!warning) return;
+        warning.textContent = msg;
+        warning.classList.remove('hidden');
+        overlay?.classList.add('show');
+      }
+      if (location.protocol === 'file:') {
+        showWarning('Please serve this folder (e.g., python3 -m http.server 8000) — browsers block module files over file://.');
+        window.__catrisShouldBoot = false;
+      } else {
+        window.__catrisShouldBoot = true;
+      }
+    })();
+  </script>
+  <script type="module">
+    if (window.__catrisShouldBoot !== false) {
+      import('./src/main.js');
+    }
+  </script>
+  <script>
+    setTimeout(() => {
+      if (window.__catrisShouldBoot === false) return;
+      if (!window.__catrisBooted) {
+        const warning = document.getElementById('boot-warning');
+        if (warning) {
+          warning.textContent = 'Game failed to boot. Make sure you are serving over http (e.g., python3 -m http.server 8000).';
+          warning.classList.remove('hidden');
+        }
+        document.getElementById('overlay')?.classList.add('show');
+      }
+    }, 1500);
+  </script>
 </body>
 </html>

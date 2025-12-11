@@ -5,7 +5,7 @@ Neon Tetris with cats, flames, and lasers. Stack cat-shaped tetrominoes, keep th
 ## Play it locally
 
 - Clone the repo.
-- Open `index.html` directly in a modern browser **or** serve the folder:
+- Serve the folder (avoids file:// module CORS quirks):
   - `python3 -m http.server 8000`
   - visit `http://localhost:8000`
 - Desktop controls: ←/→ move, ↑ rotate, ↓ soft drop, **Space** hard drop, **L** fire laser, **Esc** pause.
